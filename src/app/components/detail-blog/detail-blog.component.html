@@ -1,0 +1,73 @@
+<nav class="navbar navbar-expand-md navbar-light bg-primary">
+    <div class="container-fluid">
+    <a class="navbar-brand text-light" routerLink = "/">Blog App</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse"
+       data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+       aria-expanded="false" aria-label="Toggle navigation"
+       (click)="toggleCollapsed()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div id="navbarSupportedContent" [ngClass]="{'collapse': collapsed, 'navbar-collapse': true}">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active text-light" routerLink="/list-blogs">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active text-light" routerLink="/list-blogs">Blogs</a>
+              </li>
+            <li class="nav-item">
+              <a class="nav-link text-light" routerLink="/add-new-blog">Add New Blog</a>
+            </li>
+          </ul>
+    </div>
+    </div>
+  </nav>
+  <div class = "row mx-auto mt-3">
+    <h3>Blog Details</h3>
+  </div>
+  <div class = "row mx-auto mt-3">
+    <div class = "row mx-auto mt-3">
+        <hr class = "w-50">
+        <div class = "row mt-2">
+            <div class = "col-md-3">Blog Title</div>
+            <div class = "col-md-3">{{blogToGet.blogTitle}}</div>
+        </div>
+        <hr class = "w-50 mt-4">
+    </div>
+  </div>
+  <div class = "row mx-auto mt-3">
+    <div class = "row mx-auto">
+        <div class = "row">
+            <div class = "col-md-3">Blog Author</div>
+            <div class = "col-md-3">{{blogToGet.blogAuthor}}</div>
+        </div>
+        <hr class = "w-50 mt-4">
+    </div>
+  </div>
+  <div class = "row mx-auto mt-3">
+    <div class = "row mx-auto">
+        <div class = "row">
+            <div class = "col-md-3">Blog Content</div>
+            <div class = "col-md-3">{{blogToGet.blogContent}}</div>
+        </div>
+        <hr class = "w-50 mt-4">
+    </div>
+  </div>
+  <div class = "row mx-auto mt-3">
+    <div class = "row mx-auto">
+        <div class = "row">
+            <div class = "col-md-3">Upvotes</div>
+            <div class = "col-md-3 text-success">{{blogToGet.numberUpvotes}}</div>
+        </div>
+        <hr class = "w-50 mt-4">
+    </div>
+  </div>
+  <div class = "row mx-auto mt-3">
+    <div class = "row mx-auto">
+        <div class = "row">
+            <div class = "col-md-3">Downvotes</div>
+            <div class = "col-md-3 text-danger">{{blogToGet.numberDownvotes}}</div>
+        </div>
+        <hr class = "w-50 mt-4">
+    </div>
+  </div>

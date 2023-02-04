@@ -1,0 +1,55 @@
+<nav class="navbar navbar-expand-md navbar-light bg-primary">
+    <div class="container-fluid">
+    <a class="navbar-brand text-light" routerLink = "/">Blog App</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse"
+       data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+       aria-expanded="false" aria-label="Toggle navigation"
+       (click)="toggleCollapsed()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div id="navbarSupportedContent" [ngClass]="{'collapse': collapsed, 'navbar-collapse': true}">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active text-light" routerLink="/list-blogs">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-light" routerLink="/list-blogs">Blogs</a>
+            </li>
+          </ul>
+    </div>
+    </div>
+</nav>
+<div class = "row mx-auto mt-3">
+    <h3>Add New Blog</h3>
+</div>
+<div class = "row mx-auto">
+    <small class = "text-danger text-uppercase">
+        <strong>*Fields are required</strong>
+    </small>
+</div>
+<form [formGroup] = "blogForm">
+    <div class = "row mx-auto mt-3">
+        <div class = "form-group">
+            <input type = "text" class = "form-control w-50" 
+            placeholder = "Blog Title*" formControlName = "blogTitle"/>
+        </div>
+    </div>
+    <div class = "row mx-auto mt-3">
+        <div class = "form-group">
+            <input type = "text" class = "form-control w-50" 
+            placeholder = "Blog Author*" formControlName = "blogAuthor"/>
+        </div>
+    </div>
+    <div class = "row mx-auto mt-3">
+        <div class = "form-group">
+            <textarea class = "form-control w-50" rows = "7" 
+            placeholder = "Blog Content*" formControlName = "blogContent"></textarea>
+        </div>
+    </div>
+    <div class = "row mx-auto mt-3">
+        <div>
+            <button class = "btn btn-primary" type = "button" 
+            [disabled] = "blogForm.invalid" (click)="addNewBlog()">Add Blog</button>
+        </div>
+    </div>
+</form>

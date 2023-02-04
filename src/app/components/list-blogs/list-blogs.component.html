@@ -1,0 +1,57 @@
+<nav class="navbar navbar-expand-md navbar-light bg-primary">
+  <div class="container-fluid">
+  <a class="navbar-brand text-light" routerLink = "/">Blog App</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse"
+     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+     aria-expanded="false" aria-label="Toggle navigation"
+     (click)="toggleCollapsed()">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div id="navbarSupportedContent" [ngClass]="{'collapse': collapsed, 'navbar-collapse': true}">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active text-light" routerLink="/list-blogs">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light" routerLink="/add-new-blog">Add New Blog</a>
+          </li>
+        </ul>
+        <form class="d-flex input-group w-auto">
+          <input
+            type="search"
+            name="search"
+            class="form-control"
+            placeholder="Search Blog"
+            [(ngModel)]="searchTerm"/>
+        </form>
+  </div>
+  </div>
+</nav>
+<div class = "row mt-4 mr-4 text-center mx-auto">
+    <div class = "col-md-4" *ngFor = "let blog of listBlogs | filter: searchTerm">
+        <div class = "card shadow p-3 mb-5 rounded border {{blog.borderState}} border-3">
+            <div class="card-body">
+                <h5 class="card-title">
+                    {{blog.blogTitle}}
+                </h5>
+                <p class="card-text">
+                    <i>{{blog.blogAuthor}}</i>
+                </p>
+                <p class="card-text">
+                    {{blog.blogContent.slice(0, 30)}}...
+                </p>
+                <a [routerLink]="['/blog', blog.id]">
+                    <button type = "button" class = "btn btn-primary">Continue Reading</button>
+                </a>
+                <div class = "mt-4">
+                    <span class="text-success me-2" *ngIf="blog.numberUpvotes !== 0">+ {{blog.numberUpvotes}}</span>
+                    <span class="text-success me-2" *ngIf="blog.numberUpvotes === 0">{{blog.numberUpvotes}}</span> 
+                    <button type = "button" class = "btn btn-success btn-sm me-3" (click)="upvoteBlog(blog)">Upvote</button>
+                    <button type = "button" class = "btn btn-danger btn-sm me-2"  (click)="downvoteBlog(blog)">Downvote</button> 
+                    <span class="text-danger" *ngIf="blog.numberDownvotes !== 0">- {{blog.numberDownvotes}}</span>
+                    <span class="text-danger" *ngIf="blog.numberDownvotes === 0">{{blog.numberDownvotes}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
