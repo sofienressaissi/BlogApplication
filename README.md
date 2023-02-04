@@ -20,6 +20,8 @@ uvicorn blogApi:app --reload
 
 3) b) Angular Frontend
 
+** If you in the backend folder, tap cd ..
+
 npm install
 
 ng serve --open
